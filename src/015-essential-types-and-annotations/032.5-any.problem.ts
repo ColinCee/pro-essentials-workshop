@@ -1,8 +1,10 @@
 import { expect, it } from "vitest";
 
-const handleFormData = (e: any) => {
+const handleFormData = (e: SubmitEvent) => {
   e.preventDefault();
-  const data = new FormData(e.terget);
+  // This causes Argument of type 'EventTarget | null' is not assignable to parameter of type 'HTMLFormElement | undefined'.
+  // We can't fix this just yet without more advanced types.
+  const data = new FormData(e.target);
   const value = Object.fromEntries(data.entries());
   return value;
 };
