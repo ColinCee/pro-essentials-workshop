@@ -4,7 +4,10 @@ type User = {
   id: string;
 };
 
-type ApiResponse = [string, User[] | string];
+type ApiResponse = Success | Error;
+
+type Success = ["success", User[]];
+type Error = ["error", string];
 
 async function fetchData(): Promise<ApiResponse> {
   try {
