@@ -6,10 +6,13 @@ const findUsersByName = (
   users: {
     id: string;
     name: string;
-  }[],
+  }[]
 ) => {
+  // Typescript is wacky af and can't trust object properties not to change in the
+  // closure scope ¯\_(ツ)_/¯
   if (searchParams.name) {
-    return users.filter((user) => user.name.includes(searchParams.name));
+    const name = searchParams.name;
+    return users.filter((user) => user.name.includes(name));
   }
 
   return users;
@@ -29,7 +32,7 @@ it("Should find the exact name", () => {
         id: "2",
         name: "Alice",
       },
-    ],
+    ]
   );
 
   expect(result).toEqual([
