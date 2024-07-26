@@ -1,15 +1,15 @@
 import { Extends, Expect } from "@total-typescript/helpers";
 
-type User = {
+type Common = {
   id: string;
   createdAt: Date;
+};
+type User = Common & {
   name: string;
   email: string;
 };
 
-type Product = {
-  id: string;
-  createdAt: Date;
+type Product = Common & {
   name: string;
   price: number;
 };
@@ -36,5 +36,5 @@ type tests = [
       },
       Product
     >
-  >,
+  >
 ];
