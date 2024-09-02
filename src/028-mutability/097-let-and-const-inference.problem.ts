@@ -1,6 +1,6 @@
 // CODE
 
-let type = "button";
+let type = "button" as const;
 
 // TESTS
 
