@@ -1,13 +1,20 @@
 import { expect, it, vi } from "vitest";
 
-const LogLevel = {
+const LogLevel  = {
   DEBUG: 0,
   INFO: 1,
   WARN: 2,
   ERROR: 3,
-};
+} as const;
 
-function log(opts: { globalLogLevel: number; level: number; message: string }) {
+enum LOG_LEVEL {
+  DEBUG,
+  INFO,
+  WARN,
+  ERROR
+}
+
+function log(opts: { globalLogLevel: LOG_LEVEL; level: LOG_LEVEL; message: string }) {
   if (opts.level >= opts.globalLogLevel) {
     console.log(opts.message);
   }
