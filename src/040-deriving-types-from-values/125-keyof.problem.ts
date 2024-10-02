@@ -1,13 +1,9 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 
-interface FormValues {
-  name: string;
-  email: string;
-  password: string;
-}
+type FormValues = 'name' | "email" | "password"
 
 const inputs: Record<
-  "name" | "email" | "password",
+  FormValues,
   {
     initialValue: string;
     label: string;

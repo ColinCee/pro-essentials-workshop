@@ -13,9 +13,9 @@ const configurations = {
     apiBaseUrl: "https://staging.example.com",
     timeout: 8000,
   },
-};
+} as const;
 
-type Environment = "development" | "production" | "staging";
+type Environment = keyof typeof configurations;
 
 type test = Expect<
   Equal<Environment, "development" | "production" | "staging">
